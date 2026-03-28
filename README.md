@@ -30,9 +30,104 @@
   * **AI & NLP:** OpenAI API (GPT-4o) для обработки естественного языка и тегирования.
   * **Frontend & Bot:** Aiogram 3.0, HTML5, CSS3, Vanilla JS.
 
-> 
+## 🏗 Архитектура базы данных
 
-База данных спроектирована с жестким разделением сущностей (Third Normal Form): пользовательский блок с геймификацией, контентный блок (ивенты, категории), блок взаимодействий (закладки, подписки) и изолированный аналитический блок (`AnalyticsLog`) для сбора метрик.
+```mermaid
+erDiagram
+    %% CORE ENTITIES
+    USERS {
+        bigint id PK
+        string username
+        string role
+        int reputation_score
+        int uni_id FK
+        int faculty_id FK
+    }
+    
+    EVENTS {
+        int id PK
+        string title
+        datetime start_time
+        string event_type
+        int company_id FK
+    }
+    
+    COMPANIES {
+        int id PK
+        string name
+        boolean is_verified
+    }
+    
+    CATEGORIES {
+        int id PK
+        string name
+        int parent_id FK
+    }
+    
+    UNIVERSITIES {
+        int id PK
+        string name
+    }
+    
+    FACULTIES {
+        int id PK
+        string name
+        int uni_id FK
+    }
+
+    %% RELATIONSHIPS (Transactions & Logs)
+    EVENT_PARTICIPANTS {
+        int event_id PK, FK
+        bigint user_id PK, FK
+        string status
+        int feedback_score
+    }
+    
+    ANALYTICS_LOGS {
+        bigint id PK
+        bigint user_id FK
+        string action_type
+        json meta_data
+    }
+
+    %% DEFINING MISSING RELATIONSHIPS
+    USERS }o--o| UNIVERSITIES : "studies at"
+    USERS }o--o| FACULTIES : "belongs to"
+    UNIVERSITIES ||--o{ FACULTIES : "has"
+
+    COMPANIES ||--o{ EVENTS : "organizes"
+    
+    EVENTS ||--o{ EVENT_PARTICIPANTS : "attended by"
+    USERS ||--o{ EVENT_PARTICIPANTS : "registers"
+    
+    USERS ||--o{ ANALYTICS_LOGS : "generates actions"
+    
+    CATEGORIES ||--o{ CATEGORIES : "has subcategories"
+
+    %% MANY-TO-MANY (Implicitly shown for readability)
+    USERS }o--o{ CATEGORIES : "interests (user_categories)"
+    EVENTS }o--o{ CATEGORIES : "tagged as (event_categories)"
+    USERS }o--o{ COMPANIES : "subscribes (company_subscribers)"
+    USERS }o--o{ EVENTS : "likes (event_likes)"
+```
+
+База данных спроектирована на вырост с жестким разделением сущностей (Third Normal Form):
+1.  **Пользовательский блок:** Модели `User`, `University`, `Faculty` с заложенной механикой геймификации (баллы репутации) и связями "Многие-ко-многим" для отслеживания интересов.
+2.  **Контентный блок:** Модели `Event`, `Company` (Организатор) и древовидная модель `Category`.
+3.  **Блок взаимодействий:** Таблицы `EventParticipant` (запись на ивент с фиксацией обратной связи), `EventLike` (закладки) и `CompanySubscriber` (подписка на организатора).
+4.  **Аналитический блок:** Вынесенные таблицы `AnalyticsLog`, `NotificationLog` и `UserScoreLog` для сбора Big Data и построения продуктовых метрик.
+
+## ⚙️ Как работает система парсинга (Data Pipeline)
+
+1.  **CRON/Scheduler:** Демон запускается по расписанию (утро/вечер).
+2.  **Extract:** Сбор текста и изображений с целевых площадок через HTTPX и Telethon.
+3.  **Transform (AI):** Передача неструктурированного текста в LLM с агрессивным промптом на извлечение ядра ивента (очистка от эмодзи, рекламных хуков, приведение дат к ISO-формату).
+4.  **Validate:** Проверка ивента на дубликаты (Global Exact Match + Smart Similarity Threshold 0.65).
+5.  **Load:** Сохранение мероприятия со статусом `is_published = False` (требует модерации) и автоматический маппинг на подходящего Организатора и Категории.
+6.  **Notify:** При публикации администратором, Background-воркер собирает релевантную базу получателей и производит batch-рассылку.
+
+---
+*Проект разработан в рамках демонстрации навыков бизнес-анализа, проектирования архитектуры данных и продуктового менеджмента (создание продукта от идеи до готовой масштабируемой MVP-версии).*
 
 -----
 
