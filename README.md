@@ -4,7 +4,7 @@
 
 **Автор:** Максим Цед  
 **Специализация:** Product Management / Technical Product Analysis / Unit Economics (Fintech & Banking)  
-**Образование:** БГЭУ, «Финансы и кредит» (профиль «Финансовые рынки и финансовые инструменты»), выпуск 2027  
+**Образование:** БГЭУ, «Финансы и кредит» (профиль «Финансовые рынки и  инструменты»), выпуск 2027  
 **Контакты:** [Email](mailto:tsedmaksim@gmail.com) · [LinkedIn](https://www.linkedin.com/in/maksim-tsed-745693397) · [GitHub](https://github.com/ethnosOFF)
 
 ---
