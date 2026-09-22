@@ -60,8 +60,8 @@
 | **ЗАО «Уайт Бёрд» (Whitebird)** | Резидент ПВТ, оператор криптообмена (Декрет № 8) | Спотовые котировки (фиксация 30 сек), проведение тестирования рисков инвестора, скоринг кошельков, исполнение конверсий Fiat <-> Crypto. | Не имеет прямого доступа к балансам фиатных счетов клиентов в Банке. |
 
 <p align="center">
-  <img src="./assets/broker/01_iparitet_home.png" width="45%" alt="Точка входа в раздел Инвестиции в ДБО iParitet" />
-  <img src="./assets/broker/04_portfolio_dashboard.png" width="45%" alt="Дашборд портфеля: разделение фиатных остатков и активов" />
+  <img src="./assests/broker/01_iparitet_home.png" width="45%" alt="Точка входа в раздел Инвестиции в ДБО iParitet" />
+  <img src="./assests/broker/04_portfolio_dashboard.png" width="45%" alt="Дашборд портфеля: разделение фиатных остатков и активов" />
 </p>
 
 ---
@@ -80,9 +80,9 @@
    * Подтверждение ознакомления с Декларацией рисков и Whitepaper выпусков (регулируется правилами ПВТ по Декрету № 8).
 
 <p align="center">
-  <img src="./assets/broker/02_onboarding_finstore.png" width="30%" alt="Онбординг Finstore и FATCA" />
-  <img src="./assets/broker/03_onboarding_consents.png" width="30%" alt="Раздельные согласия на ПДн и банковскую тайну" />
-  <img src="./assets/broker/08_crypto_verification_test.png" width="30%" alt="Тестирование по рискам согласно Декрету № 8" />
+  <img src="./assests/broker/02_onboarding_finstore.png" width="30%" alt="Онбординг Finstore и FATCA" />
+  <img src="./assests/broker/03_onboarding_consents.png" width="30%" alt="Раздельные согласия на ПДн и банковскую тайну" />
+  <img src="./assests/broker/08_crypto_verification_test.png" width="30%" alt="Тестирование по рискам согласно Декрету № 8" />
 </p>
 
 ---
@@ -98,9 +98,9 @@ $$\text{YTM} \approx \frac{\text{Купон} + \frac{\text{Номинал} - P_{
 * **Спотовый криптообмен (WhiteBird):** Обмен BTC, ETH, USDT за BYN и USD. Котировка и спред фиксируются на 30 секунд. Встроен тест из 5 контрольных вопросов по Декрету № 8 (волатильность, необратимость блокчейн-транзакций, отсутствие госгарантий).
 
 <p align="center">
-  <img src="./assets/broker/05_tokens_catalog.png" width="30%" alt="Каталог инвестиционных токенов" />
-  <img src="./assets/broker/06_token_purchase_sheet.png" width="30%" alt="Первичная покупка токена" />
-  <img src="./assets/broker/07_token_p2p_ytm_slider.png" width="30%" alt="Вторичный P2P-рынок и слайдер YTM" />
+  <img src="./assests/broker/05_tokens_catalog.png" width="30%" alt="Каталог инвестиционных токенов" />
+  <img src="./assests/broker/06_token_purchase_sheet.png" width="30%" alt="Первичная покупка токена" />
+  <img src="./assests/broker/07_token_p2p_ytm_slider.png" width="30%" alt="Вторичный P2P-рынок и слайдер YTM" />
 </p>
 
 ---
@@ -157,8 +157,8 @@ sequenceDiagram
 * **Эскалация на L2:** Транзакции в статусе ожидания >24 часов автоматически передаются операционному офицеру на ручной аудит.
 
 <p align="center">
-  <img src="./assets/broker/09_crypto_exchange_whitebird.png" width="45%" alt="Криптообмен Whitebird" />
-  <img src="./assets/broker/10_trading_history.png" width="45%" alt="История операций и статусы клиринга" />
+  <img src="./assests/broker/09_crypto_exchange_whitebird.png" width="45%" alt="Криптообмен Whitebird" />
+  <img src="./assests/broker/10_trading_history.png" width="45%" alt="История операций и статусы клиринга" />
 </p>
 
 ---
@@ -193,7 +193,7 @@ sequenceDiagram
 # 2. Zoo Merge Tycoon — Soft Launch Analytics & Unit Economics Validation
 
 > **Статус:** Soft Launch завершен, кампания остановлена на основе данных, сформирован план продуктового пивота.  
-> **Артефакты:** [Журнал экспериментов и когорт](./роблокс/заметки.docx) · [Аналитический разбор](./роблокс/собес_краткий.docx) · [Выгрузки сессий и когорт](./роблокс/таблицы/)
+
 
 ---
 
